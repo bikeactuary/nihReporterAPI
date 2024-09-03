@@ -348,6 +348,8 @@ make_req <- function(criteria = list(fiscal_years = lubridate::year(Sys.Date()))
                 is.numeric(criteria$spending_categories$values),
                 is.logical(criteria$spending_categories$match_all),
                 length(criteria$spending_categories$match_all) == 1 )
+    
+    criteria$spending_categories$match_all %<>% unbox()
   }
   
   if (!is.null(criteria$project_start_date)) {
